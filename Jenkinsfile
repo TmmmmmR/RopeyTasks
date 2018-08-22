@@ -15,19 +15,18 @@ node {
       }
    }
    
-  stage('Tests') {
-      steps {
-        parallel(
-          "Unit Tests": {
-            sh 'echo "Unit Tests"'
-            
-          },
-          "Feature tests": {
-            sh 'echo "Feature Tests"'
-          }
-        )
+stage('Tests') {
+  steps {
+    parallel(
+      a: {
+        echo "This is branch a"
+      },
+      b: {
+        echo "This is branch b"
       }
+    )
   }
+}
 
    stage("Results"){
       steps {
