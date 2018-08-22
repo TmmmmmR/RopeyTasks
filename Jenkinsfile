@@ -15,18 +15,26 @@ node {
       }
    }
    
-stage('Tests') {
-  steps {
-    parallel(
-      a: {
-        echo "This is branch a"
-      },
-      b: {
-        echo "This is branch b"
-      }
-    )
-  }
-}
+   stage('Run Tests') {
+            parallel {
+                stage('Test On Windows') {
+                    agent {
+                        label "windows"
+                    }
+                    steps {
+                        sh 'echo "X Step"'
+                    }
+                }
+                stage('Test On Linux') {
+                    agent {
+                        label "linux"
+                    }
+                    steps {
+                        sh 'echo "X Step"'
+                    }
+                }
+            }
+   }
 
    stage("Results"){
       steps {
