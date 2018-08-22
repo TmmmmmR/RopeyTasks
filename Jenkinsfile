@@ -4,11 +4,15 @@
 
 node {
       stage('Checkout') {
-      sh 'echo "Step x"'
+      steps {
+        sh 'echo "X Step"'
+      }
    }
    
    stage('Build') {
-      sh 'echo "Step x"'
+      steps {
+        sh 'echo "X Step"'
+      }
    }
    
   stage('Tests') {
@@ -26,7 +30,9 @@ node {
   }
 
    stage("Results"){
-      sh 'echo "Step x"'
+      steps {
+        sh 'echo "X Step"'
+      }
    }
    
    
@@ -34,6 +40,8 @@ node {
     input 'Ready to Deploy??'
 
     stage("Deploy"){
-      sh 'echo "Step x"'
+      steps {
+        sh 'echo "X Step"'
+      }
     }
 }
